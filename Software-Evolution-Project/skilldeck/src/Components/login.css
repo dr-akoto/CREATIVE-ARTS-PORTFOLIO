@@ -1,0 +1,139 @@
+/* Reset default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Full-screen layout */
+  .login-container {
+    display: flex;
+    height: 100vh;
+    background: url('https://s45271.pcdn.co/wp-content/uploads/elementor/thumbs/resistance-to-active-learning-1711-nv29iaq4o6golio83jpr6s7ymjde8wuikgkcftx8x0.jpg') center/cover no-repeat;/* Purple gradient */
+  }
+  
+  /* Left section (background and text) */
+  .left-section {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ceb05ceb;
+    padding: 20px;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+  }
+  .left-section h1 {
+    font-size: 5rem;
+    font-family: Garamond;
+  }
+  .green-text {
+    color: #00157F;
+  }
+  .left-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    margin-top: 200px;
+  }
+  
+  .left-section p {
+    font-size: 1.2rem;
+  }
+  
+  /* Right section (form) */
+  .right-section {
+    flex: 1;
+    background-color: rgba(236, 230, 230, 0.902);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -10px 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .right-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .login-input {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+    width: 300px;
+    background-color: azure;
+  }
+  
+  .login-input:focus {
+    border-color: #00157F;
+  }
+  
+  .options {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+  }
+  
+  .forgot-password {
+    font-size: 0.9rem;
+    color: #4f4e4e;
+    text-decoration: none;
+  }
+  
+  .forgot-password:hover {
+    text-decoration: underline;
+    color: #ceb05ceb;
+  }
+  
+  .login-button {
+    padding: 15px;
+    font-size: 1.1rem;
+    background-color: white;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 300px;
+  }
+  
+  .login-button:hover {
+    background-color: #00157F;
+    color: white;
+  }
+  
+  /* Footer */
+  .login-footer {
+    font-size: 1rem;
+    margin-top: 20px;
+    color: #333;
+  }
+  
+  .login-footer a {
+    color: #eeaf01f9;
+    text-decoration: none;
+  }
+  
+  .login-footer a:hover {
+    text-decoration: underline;
+  }
+  
