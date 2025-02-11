@@ -20,8 +20,11 @@ const Navbar = () => {
           <a href="/explore" className="nav-link">Explore</a>
           <div className="dropdown-menu">
             <a href="/explore/projects">Projects</a>
-            <a href="/explore/articles">Articles</a>
-            <a href="/explore/tutorials">Tutorials</a>
+            <a href="/explore/Graphic Design">Graphic Design</a>
+            <a href="/explore/Pencil Arts">Pencil Arts</a>
+            <a href="/explore/Sculpture">Sculpture Work</a>
+            <a href="/explore/Illustration">Illustration</a>
+            <a href="/explore/Photography">Photography</a>
           </div>
         </div>
 

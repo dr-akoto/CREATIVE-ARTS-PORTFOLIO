@@ -7,18 +7,18 @@ const ContentGrid = () => {
   const [projects, setProjects] = useState([]);
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Fetch projects from API when the component loads
+  // Load projects from localStorage when the component mounts
   useEffect(() => {
-    fetch('http://localhost:5000/api/projects') // Replace with your actual API endpoint
-      .then(response => response.json())
-      .then(data => setProjects(data))
-      .catch(error => console.error('Error fetching projects:', error));
+    const storedProjects = JSON.parse(localStorage.getItem('projects')) || [];
+    setProjects(storedProjects);
   }, []);
 
   const toggleLike = (id) => {
-    setProjects(projects.map(project =>
+    const updatedProjects = projects.map(project =>
       project.id === id ? { ...project, likes: project.liked ? project.likes - 1 : project.likes + 1, liked: !project.liked } : project
-    ));
+    );
+    setProjects(updatedProjects);
+    localStorage.setItem('projects', JSON.stringify(updatedProjects));
   };
 
   const openModal = (project) => {
@@ -34,8 +34,10 @@ const ContentGrid = () => {
       <div className="project-grid">
         {projects.map((project) => (
           <div key={project.id} className="project-card" onClick={() => openModal(project)}>
-            <div className="project-image-container">
-              <img src={project.image} alt={project.title} className="project-image" />
+            <div className="project-media-container">
+              {project.type === 'image' && <img src={project.content} alt={project.title} className="project-image" />}
+              {project.type === 'video' && <video src={project.content} controls className="project-video" />}
+              {project.type === 'text' && <p className="project-text">{project.content}</p>}
             </div>
             <div className="project-info">
               <h3 className="project-title">{project.title}</h3>
@@ -57,7 +59,9 @@ const ContentGrid = () => {
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="close-button" onClick={closeModal}>&times;</button>
-            <img src={selectedProject.image} alt={selectedProject.title} className="modal-image" />
+            {selectedProject.type === 'image' && <img src={selectedProject.content} alt={selectedProject.title} className="modal-image" />}
+            {selectedProject.type === 'video' && <video src={selectedProject.content} controls className="modal-video" />}
+            {selectedProject.type === 'text' && <p className="modal-text">{selectedProject.content}</p>}
             <h2>{selectedProject.title}</h2>
             <p><strong>Author:</strong> {selectedProject.author}</p>
             <p>{selectedProject.description}</p>
