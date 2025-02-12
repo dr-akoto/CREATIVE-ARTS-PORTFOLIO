@@ -1,17 +1,38 @@
-//server.js
+// server.js
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
+const multer = require("multer");
+const bodyParser = require("body-parser");
+const fs = require("fs");
+const path = require("path");
 const User = require("./models/User");
 
 dotenv.config();
 const app = express();
-app.use(cors());
-app.use(express.json());
+const PORT = process.env.PORT || 5000;
 
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+app.use(express.static("uploads")); // Serve static files from the uploads directory
+
+// Setup multer for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/"); // Directory to save uploaded files
+  },
+  filename: (req, file, cb) => {
+    cb(null, `${Date.now()}-${file.originalname}`); // Unique filename
+  },
+});
+
+const upload = multer({ storage });
+
+// Connect to MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -74,4 +95,39 @@ app.post("/api/register", async (req, res) => {
   } catch (error) {
     res.status(500).json({ success: false, message: "Server error" });
   }
+});
+
+// Route to handle project submission
+app.post("/api/projects", upload.fields([{ name: "video" }, { name: "image" }]), (req, res) => {
+  const { title, description } = req.body;
+  const video = req.files["video"] ? req.files["video"][0].filename : null;
+  const image = req.files["image"] ? req.files["image"][0].filename : null;
+
+  // Create project object
+  const project = {
+    title,
+    description,
+    video,
+    image,
+  };
+
+  // Read existing projects
+  const projectsPath = path.join(__dirname, "projects.json");
+  let projects = [];
+
+  if (fs.existsSync(projectsPath)) {
+    const data = fs.readFileSync(projectsPath);
+    projects = JSON.parse(data);
+  }
+
+  // Save the new project
+  projects.push(project);
+  fs.writeFileSync(projectsPath, JSON.stringify(projects, null, 2));
+
+  res.status(201).json({ message: "Project submitted successfully!", project });
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
