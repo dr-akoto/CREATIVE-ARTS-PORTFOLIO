@@ -1,10 +1,12 @@
-//User.js
+// User.js
 const mongoose = require("mongoose");
+
 const UserSchema = new mongoose.Schema({
+  fullName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  country: { type: String, required: true },
 });
-module.exports = mongoose.model("User", UserSchema);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Export the User model
+module.exports = mongoose.model("User", UserSchema);
