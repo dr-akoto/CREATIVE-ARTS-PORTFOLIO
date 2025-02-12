@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/static/css/main.41112e4b.css",
+    "main.js": "/static/js/main.12c20d42.js",
+    "static/js/488.470ea5cc.chunk.js": "/static/js/488.470ea5cc.chunk.js",
+    "static/media/Covesea.jpg": "/static/media/Covesea.d9640bcacc0f9ff14a12.jpg",
+    "static/media/hero-bg.jpg": "/static/media/hero-bg.bc7bc22b6425105ce691.jpg",
+    "static/media/Hyperion ai.png": "/static/media/Hyperion ai.ce7ae5580f62b5ecde36.png",
+    "static/media/ArtistryAlley logo.jpeg": "/static/media/ArtistryAlley logo.6269ba2637b7dce6ae9c.jpeg",
+    "index.html": "/index.html",
+    "main.41112e4b.css.map": "/static/css/main.41112e4b.css.map",
+    "main.12c20d42.js.map": "/static/js/main.12c20d42.js.map",
+    "488.470ea5cc.chunk.js.map": "/static/js/488.470ea5cc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.41112e4b.css",
+    "static/js/main.12c20d42.js"
+  ]
+}
