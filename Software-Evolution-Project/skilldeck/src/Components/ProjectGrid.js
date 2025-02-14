@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faEye } from '@fortawesome/free-solid-svg-icons';
 
 // Import images
-import hyperion from './assets/Hyperion ai.png';
-import covesea from './assets/Covesea.jpg';
+import hyperion from '../assets/Hyperion ai.png';
+import covesea from '../assets/Covesea.jpg';
 
 const ProjectGrid = () => {
   const [projects] = useState([
